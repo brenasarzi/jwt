@@ -11,12 +11,15 @@ function verificaUsuario(usuario){
 }
 
 async function verificaSenha(senha, senhaHash){
+
     const senhaValida = await bcrypt.compare(senha, senhaHash)
+
     if(!senhaValida){
         throw new InvalidArgumentError('E-mail ou senha inválidos!')
     }
-}
 
+
+}
 passport.use(
     new LocalStrategy({
         usernameField: 'email',
